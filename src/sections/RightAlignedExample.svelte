@@ -1,62 +1,61 @@
 <script>
-    import * as Highcharts from "highcharts";
-    import "highcharts/modules/exporting";
-    import { Chart } from "@highcharts/svelte";
-    import Scroller from "../lib/Scroller.svelte";
-    import ArticleText from "../lib/ArticleText.svelte";
-
+  import Scroller from "../lib/Scroller.svelte";
+  import ArticleText from "../lib/ArticleText.svelte";
+  import TitleCard from "../lib/TitleCard.svelte";
+  import { onMount } from "svelte";
 </script>
 
 <div>
     <Scroller layout="right">
         {#snippet sticky()}
-            <div class="chart">
-                <Chart {options} highcharts={Highcharts} />
+            <img class="percent-img" src="percent_of_Income_Spent_on_Rent .png" alt="Percent of Income Spent on Rent by Black communities" />
+            <div>
+                <p>
+                    Black households in <strong>Miami-Dade County</strong> spend a significant portion of their income on rent,
+          with <strong>37.5%</strong> of income going toward housing costs.
+                </p>
+                <p>
+                     This high rent burden can make it difficult to save for a down payment on a home,
+          limiting opportunities for homeownership and long-term wealth building.
+                </p>
+                <p>
+                     <strong>Source:</strong>
+          <a href="https://blackwealthdata.org/explore/homeownership#HOM-09" target="_blank"> 
+            Black Wealth Data Center (BWDC)
+            </a>
+                </p>
             </div>
-            <p>
-                Here's an example chart using
-                <a href="https://www.highcharts.com/">Highcharts</a>!
-            </p>
-            <p>
-                📈 <strong>Highcharts</strong> is a super-flexible library for
-                creating all kinds of charts. See demos of different chart types
-                <a href="https://www.highcharts.com/demo">here</a>.
-            </p>
-            <p>
-                Since we're using Highcharts through Svelte, the syntax is a
-                little different from what you might see in the demos. But all
-                of Highcharts' functionality is available through the Highcharts
-                for Svelte package.
-            </p>
-            <p>
-                The configuration is done through the
-                <code>options</code> json object passed to the chart, which you'll
-                see in the source code for this template.
-            </p>
-            <p>
-                Use the
-                <a href="https://api.highcharts.com/highcharts/"
-                    >API reference</a
-                >
-                to understand what each element in the <code>options</code> object
-                does.
-            </p>
         {/snippet}
 
         {#snippet scrolly()}
-            <ArticleText>
-                <strong>
-                    If you use this template, be sure to modify it and make it
-                    your own!
-                </strong>
-            </ArticleText>
-        {/snippet}
+  <ArticleText>
+    <strong>Welcome to my data scrollytelling piece on Miami-Dade County.</strong>
+  </ArticleText>
+
+  <ArticleText>
+    In this project, we will explore the structural and financial challenges that Black households face on the path to homeownership. 
+    From high interest rates to limited income and disproportionate rent burdens, this piece highlights key data points to tell a deeper story.
+  </ArticleText>
+
+  <ArticleText>
+    Alongside this text, you will see a visual showing that the median income for Black residents in Miami-Dade County is <strong>$51,550</strong>.
+    In 2023, they spent <strong>37.5%</strong> of that income on rent alone being a substantial burden that makes saving for a down payment increasingly difficult.
+  </ArticleText>
+
+  <ArticleText>
+    <strong>
+      As you scroll, reflect on how these factors compound and contribute to inequities in homeownership access across the country.
+    </strong>
+  </ArticleText>
+{/snippet}
     </Scroller>
 </div>
 
 <style>
-    .chart {
-        width: 90%;
-        margin: 0px auto;
-    }
+  .percent-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
 </style>

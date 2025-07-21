@@ -32,11 +32,12 @@
     .article-text {
         margin: 50vh auto;
         width: 50%;
-        background-color: #ff99fc;
-        color: #007052;
-        border: solid #8427c9 3px;
+        background-color: #f4f8f1;
+        color: #2f4858;
+        border: solid #3ba66b 3px;
         border-radius: 20px;
         padding: 20px;
-        box-shadow: 16px 16px #8aa6df;
+        box-shadow: 16px 16px #d6e5d8;
     }
 </style>
+

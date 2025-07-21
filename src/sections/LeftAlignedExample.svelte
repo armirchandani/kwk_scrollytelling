@@ -1,127 +1,117 @@
 <script>
     import * as Highcharts from "highcharts";
     import "highcharts/modules/exporting";
-    import { Chart } from "@highcharts/svelte";
+    import {Chart} from "@highcharts/svelte";
     import Scroller from "../lib/Scroller.svelte";
     import ArticleText from "../lib/ArticleText.svelte";
 
-    const series = [
-        {
-            name: "Group 1",
-            data: [
-                [1990, 3],
-                [2000, 4],
-                [2010, 1],
-                [2020, 1],
-            ],
-            color: "#8427c9",
-        },
-        {
-            name: "Group 2",
-            data: [
-                [1990, 2],
-                [2000, 5],
-                [2010, -2],
-                [2020, 2],
-            ],
-            color: "#ff99fc",
-        },
-        {
-            name: "Group 3",
-            data: [
-                [1990, 4],
-                [2000, 3],
-                [2010, 0],
-                [2020, 3],
-            ],
-            color: "#4096fa",
-        },
-    ];
-
-    let chart;
-    let thirdSeriesVisible = false;
-
     let options = {
         chart: {
-            type: "spline",
+            type: "pie",
             backgroundColor: "#e3ff00",
             borderColor: "#007052",
             borderWidth: 5,
             borderRadius: 20,
         },
         title: {
-            text: "Another Example Chart",
+            text: "Median Income by Race – Miami-Dade (2023)",
         },
         subtitle: {
-            text: "With a subtitle! And styling!",
+            text: "Based on 2023 U.S. Census ACS Data",
         },
-        series: [series[0], series[1]],
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                dataLabels: [
+                    {
+                        enabled: true,
+                        distance: 20,
+                    },
+                    {
+                        enabled: true,
+                        distance: -40,
+                        format: "{point.percentage:.1f}%",
+                        style: {
+                            fontSize: "1.2em",
+                            textOutline: "none",
+                        },
+                        filter: {
+                            operator: ">",
+                            property: "percentage",
+                            value: 10,
+                        },
+                    },
+                ],
+            },
+        },
+        series: [
+            {
+                name: "Median Income ($)",
+                data: [
+                    { name: "Black", y: 51550 },
+                    { name: "White", y: 77378, sliced: true, selected: true },
+                    { name: "Hispanic", y: 67018 },
+                    { name: "Asian", y: 92788 },
+                ],
+            },
+        ],
     };
-
-    function toggleThirdSeries() {
-        const existingSeries = chart.series.find((s) => s.name === "Group 3");
-
-        if (existingSeries) {
-            existingSeries.remove();
-            thirdSeriesVisible = false;
-        } else {
-            chart.addSeries(series[2]);
-            thirdSeriesVisible = true;
-        }
-    }
 </script>
 
 <div>
     <Scroller layout="left">
         {#snippet sticky()}
             <div class="chart">
-                <Chart bind:chart {options} highcharts={Highcharts} />
+                <Chart {options} highcharts={Highcharts} />
             </div>
-            <button on:click={toggleThirdSeries} class="toggle-button">
-                {thirdSeriesVisible ? "Remove Group 3" : "Add Group 3"}
-            </button>
+
             <div>
-                <p>
-                    You can use Svelte to add and remove data from a Highcharts
-                    chart.
-                </p>
-                <p>
-                    When you click the button above, a third group is toggled in
-                    the chart. Check out the source code to see how it's done.
-                </p>
-                <p>
-                    <strong
-                        >🤔 How might you use other HTML elements, like
-                        checkboxes or radio buttons, in a similar way to filter
-                        data?</strong
-                    >
-                </p>
+               <p>
+    This pie chart illustrates the distribution of median income by race in Miami-Dade County, 2023. 
+    It visually highlights the economic disparities faced by different racial and ethnic groups.
+</p>
+<p>
+    Understanding these imbalances is critical when addressing racial wealth gaps and designing equitable policy interventions.
+</p>
+<p>
+    Hover over each slice to see how each group compares to the county’s overall median income of $78,538.
+</p>
+
             </div>
         {/snippet}
 
         {#snippet scrolly()}
-            <ArticleText>
-                You might notice that this basic template doesn't have certain
-                features that are common in scrollytelling.
-            </ArticleText>
+           <ArticleText>
+    According to the <a href="https://www.census.gov/quickfacts/fact/table/US/SEX255223" target="_blank">U.S. Census Bureau (2019–2023)</a>, 
+    the median household income in Miami-Dade County was <strong>$78,538</strong> in 2023 dollars.
+</ArticleText>
 
-            <ArticleText>
-                For example, you might want a component that doesn't feature a
-                sticky component at all. Or a component that is solely a sticky
-                component.
-            </ArticleText>
+<ArticleText>
+    While this overall figure may seem stable, it masks significant racial disparities in income levels. 
+    Not all communities benefit equally from economic growth.
+</ArticleText>
 
-            <ArticleText>
-                You might also want to add more interactivity or gamify parts of
-                your scrollytelling piece.
-            </ArticleText>
+<ArticleText>
+    White and Asian households report higher median incomes, while Black or African American and Hispanic or Latino households face larger income constraints.
+</ArticleText>
 
-            <ArticleText>
-                <strong>
-                    It's up to you to research how to create the effects and
-                    functionality that you envision!
-                </strong>
-            </ArticleText>
+<ArticleText>
+    These disparities are rooted in longstanding issues of access, whether in employment, education, or intergenerational wealth-building opportunities.
+</ArticleText>
+
+<ArticleText>
+    <a href="https://blackwealthdata.org/explore/employment#EMP-08" target="_blank">Data from the Black Wealth Data Center</a> confirms these inequities. 
+    Economic gaps often translate into lower homeownership rates and limited financial security for marginalized groups.
+</ArticleText>
+
+<ArticleText>
+    <a href="https://github.com/armirchandani/MedianIncome" target="_blank">Supplementary analysis on GitHub</a> supports this trend, showing a consistent pattern of income inequality across racial groups in Miami-Dade County.
+</ArticleText>
+
+<ArticleText>
+    <strong>Income is more than a statistic, it determines access to opportunity and shapes the lived reality of communities across Miami-Dade.</strong>
+</ArticleText>
+
         {/snippet}
     </Scroller>
 </div>
@@ -130,23 +120,4 @@
     .chart {
         width: 90%;
         margin: 0px auto;
-    }
-
-    .toggle-button {
-        margin: 20px;
-        padding: 20px;
-        color: #007052;
-        background-color: #0bd956;
-        border: solid 2px #007052;
-        border-radius: 16px;
-        font-size: large;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        box-shadow: 0 4px 0 #007052;
-    }
-
-    .toggle-button:active {
-        transform: translateY(2px);
-        box-shadow: 0 2px 0 #007052;
-    }
-</style>
+    } </style>

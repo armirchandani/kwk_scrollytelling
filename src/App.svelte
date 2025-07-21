@@ -7,7 +7,7 @@
   import IntersectionObserverAlertExample from "./sections/IntersectionObserverAlertExample.svelte";
   import DisappearingDuckExample from "./sections/DisappearingDuckExample.svelte";
   import IntersectionObserverSectionCard from "./sections/IntersectionObserverSectionCard.svelte";
-  import IntersectionObserverListExample from "./sections/IntersectionObserverListExample.svelte";
+
 </script>
 
 <main>
@@ -20,5 +20,5 @@
   <InteresectionObserverBasicExample />
   <IntersectionObserverAlertExample />
   <DisappearingDuckExample />
-  <IntersectionObserverListExample />
+  
 </main>

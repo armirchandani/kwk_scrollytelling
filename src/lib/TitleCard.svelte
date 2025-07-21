@@ -11,37 +11,38 @@
 
 <style>
     .title-card {
-        background-color: #007052;
+        background-color: #e6f2ec; /* soft sage green */
         height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding: 2rem;
+        padding: 3rem 1.5rem;
         box-sizing: border-box;
         font-family: "Inter", sans-serif;
     }
 
     .content {
         max-width: 700px;
-        background-color: #034c36;
-        padding: 2rem;
-        border: 6px solid #e3ff00;
+        background-color: #ffffff; /* clean white card */
+        padding: 2.5rem;
+        border: 5px solid #8a4ebf; /* muted plum border */
         border-radius: 2rem;
-        box-shadow: 16px 16px #188f70;
+        box-shadow: 12px 12px 0 #c3d7cc; /* soft shadow for depth */
     }
 
     h1 {
         font-size: 3rem;
         margin: 0;
-        color: #e3ff00;
-        text-shadow: 1px 1px 0 #007052;
+        color: #3a3a3a; /* deep charcoal */
+        text-shadow: 1px 1px 0 #d2f2e0;
     }
 
     p {
         font-size: 1.3rem;
-        color: #f7f5eb;
-        margin-top: 1rem;
+        color: #555;
+        margin-top: 1.2rem;
+        line-height: 1.6;
     }
 
     @media (max-width: 600px) {
@@ -54,3 +55,4 @@
         }
     }
 </style>
+

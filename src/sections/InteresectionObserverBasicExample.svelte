@@ -1,6 +1,7 @@
 <script>
     import Scroller from "../lib/Scroller.svelte";
     import ObservedArticleText from "../lib/ObservedArticleText.svelte";
+    import ArticleText from "../lib/ArticleText.svelte";
 
     // this `options` object below is passed into the <ObservedArticleText>
     // component, and from there it gets passed to the IntersectionObserver object w
@@ -10,7 +11,7 @@
     // 85% and 95% ensures we trigger the correct change in background color
     // whether the element is being scrolled into the viewport or out of the viewport.
     const options = {
-        threshold: [0.85, 0.95],
+        threshold: [0.8, 0.9],
     };
 
     const callback = (entries, observer) => {
@@ -31,66 +32,38 @@
 <div>
     <Scroller layout="left">
         {#snippet sticky()}
+            <div class="percentage-text">
+                <img src="percentage_interest.png" alt="Percentage of Housing Loans with Interest Rates more than 6.77%" style="width: 70%; height: auto;" />
+            </div>
             <div>
                 <p>
-                    This section shows how to use the
-                    <code>{"<ObservedArticleText>"} component.</code>
-                </p>
-                <p>
-                    The <code>{"<ObservedArticleText>"}</code>
-                    component is very similar to the
-                    <code>{"<ArticleText>"}</code>
-                    component, but it also creates and uses an
-                    <a
-                        href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API"
-                    >
-                        Intersection Observer
-                    </a>.
-                </p>
-                <p>
-                    That Intersection Observer object "watches" the element. We
-                    can use it to answer the question:
-                    <br /><br />
-                    <strong
-                        >"Is this element currently visible in the browser
-                        window?"</strong
-                    >
-                    <br /><br />
-                    <strong> How does it work?</strong> When some specified percentage of
-                    the element crosses into or out of the viewport of this
-                    browser window, a
-                    <strong> callback function </strong> is called.
-                </p>
-                <p>
-                    A <strong>callback function</strong> is a function, which we
-                    define, that will get called when a specific event happens.
-                </p>
-                <p>
-                    We can define any behavior we want to in that callback
-                    function. In this case, we turn the background of the box a
-                    different color depending on whether the element is more or
-                    less than 90% visible.
-                </p>
-                <p>
-                    📝 <strong>Try it yourself!:</strong> Make a change so that
-                    the article text box changes color when <strong>50%</strong>
-                    of it is visible.
+                    A notable percentage (<strong>18.1%</strong>) of housing loans for Black or African American individuals have interest rates above <strong>6.77%</strong>.
                 </p>
             </div>
+
         {/snippet}
+{#snippet scrolly()}
+    <ArticleText>
+        A notable percentage (<strong>18.1%</strong>) of housing loans for Black or African American individuals have interest rates above <strong>6.77%</strong>, 
+        highlighting disparities in borrowing costs that can impact long-term wealth building.
+    </ArticleText>
 
-        {#snippet scrolly()}
-            <ObservedArticleText {callback} {options}>
-                <code>{"<ObservedArticleText>"}</code> example #1
-            </ObservedArticleText>
+    <ArticleText>
+        This analysis underscores the challenges faced by Black borrowers in accessing affordable financing, which may contribute to ongoing inequities in homeownership rates.
+    </ArticleText>
 
-            <ObservedArticleText {callback} {options}>
-                <code>{"<ObservedArticleText>"}</code> example #2
-            </ObservedArticleText>
-
-            <ObservedArticleText {callback} {options}>
-                <code>{"<ObservedArticleText>"}</code> example #3
-            </ObservedArticleText>
-        {/snippet}
+    <ArticleText>
+        Sources: <a href="https://blackwealthdata.org/explore/homeownership#HOM-01" target="_blank" rel="noopener noreferrer">BWDC</a> and <a href="https://github.com/armirchandani/AvgInterestRates" target="_blank" rel="noopener noreferrer">GitHub Data Repository</a>.
+    </ArticleText>
+{/snippet}
     </Scroller>
 </div>
+
+<style>
+    .percentage-text {
+        text-align: center;
+        font-size: 1.2em;
+        color: #333;
+        margin-bottom: 1rem;
+    }
+    </style>
