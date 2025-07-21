@@ -2,6 +2,7 @@
 This is an interactive scrollytelling project visualizing the systemic barriers to Black homeownership in Miami-Dade County, Florida. Using real data and a thoughtful narrative, the site explores disparities in income, interest rates, rent burden, and loan decisions by race and ethnicity.
 
 # Live Demo
+(https://armirchandani.github.io/kwk_scrollytelling/)
 
 # Project Overview
 Black communities in Miami-Dade County face unique challenges when it comes to owning a home — from income inequality and rent burden to loan approval disparities and historical redlining. This project visualizes key data points to highlight:
